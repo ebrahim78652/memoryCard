@@ -47,11 +47,15 @@ header h1{
 
 .cards_area{
   padding: 0.5rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15vw, 1fr));
   justify-content: center;
+  
+  margin-top: 7rem;
 }
   img{
     max-width: 15vw;
+    max-height: 40vh;
     border-radius: 20px;
     transition: all 0.2s ease
   }
@@ -62,3 +66,80 @@ header h1{
 box-shadow: 0px 8px 31px -3px #000000;
     
   }
+
+  .imageDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Work_Sans_Bold";
+    font-size: 2rem;
+  }
+
+  /*||Gameover  */
+  .gameover_container {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.61);
+    
+    
+}
+
+.card_gameover, .card_gameWon{
+  width: 50vw;
+  height: 30vh;
+  bottom: 5vh;
+  font-size: calc(2rem + 1.5vw);
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+  margin-top: 5rem;
+  justify-content: center;
+  animation-name: showMessage;
+animation-duration: 1s;
+animation-timing-function: cubic-bezier(0, 0.57, 0.7, 0.78);
+} 
+
+.card_gameWon{
+  font-weight: 800;
+}
+
+.message{
+  font-family: monospace;
+border-radius: 20px;
+
+}
+
+.restart {
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: rgb(69 198 55);
+  margin-top: 2rem;
+  padding: 0.5rem 5rem;
+  transition: all 0.2s ease;
+
+  
+}
+
+.restart:hover{
+  transform: scale(1.01)
+  
+}
+
+@keyframes showMessage {
+
+  0%{
+     opacity: 0
+  }
+  100%{
+    opacity: 1
+
+    
+  }
+}
