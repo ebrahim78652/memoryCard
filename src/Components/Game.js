@@ -42,9 +42,11 @@ export function Game(props) {
   //checking if player has won
   useEffect(() => {
     console.log(numPicsinCurrentRound);
-    if (score === numPicsinCurrentRound && numPicsinCurrentRound === 3) {
+    if (score === numPicsinCurrentRound && numPicsinCurrentRound === 12) {
       setIsGameWon(true);
     }
+
+    //if round is won, then going to next round;
     if (score === numPicsinCurrentRound) {
       console.log("start of new round!");
       const numPicturesInOldRound = numPicsinCurrentRound;
@@ -63,6 +65,7 @@ export function Game(props) {
       return false;
     }
 
+    //if player not lost, shuffle the cards and update the list of clicked pictures
     updateListClickedPictures(dataAttribute);
     shufflePictures();
   };
@@ -169,3 +172,5 @@ export function Game(props) {
     </div>
   );
 }
+
+//comment in the new branch
