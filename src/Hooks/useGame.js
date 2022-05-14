@@ -58,7 +58,8 @@ export function useGame() {
     }
 
     //if player not lost, shuffle the cards and update the list of clicked pictures
-    updateListClickedPictures(dataAttribute);
+    setPicturesClicked([...picturesClicked, dataAttribute]);
+    incrementScore();
     shufflePictures();
   };
 
@@ -70,11 +71,6 @@ export function useGame() {
       return true;
     }
     return false;
-  };
-
-  const updateListClickedPictures = (dataAttribute) => {
-    setPicturesClicked([...picturesClicked, dataAttribute]);
-    incrementScore();
   };
 
   //extract this method.
