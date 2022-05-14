@@ -6,7 +6,6 @@ export function Game(props) {
   const {
     overAllScore,
     highScore,
-    dataFromAPI,
     checkPlayerLostAndShuffleCards,
     currentPictures,
     isGameOver,
@@ -23,7 +22,7 @@ export function Game(props) {
         <div className="score">Score: {overAllScore}</div>
         <div className="high_score">High Score: {highScore} </div>
       </div>
-      {dataFromAPI ? (
+      {currentPictures ? (
         <CardsArea
           checkPlayerLostAndShuffleCards={checkPlayerLostAndShuffleCards}
           //imageInfos={[dataFromAPI[0], dataFromAPI[1], dataFromAPI[2]]}

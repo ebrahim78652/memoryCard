@@ -21,6 +21,7 @@ export function usePictures(numOfPicturesInFirstRound) {
         }
       );
       const data = await response.json();
+
       const shuffled = data.sort(() => 0.5 - Math.random());
       let selected = shuffled.slice(0, 25);
       const arrImageInfos = [];
@@ -70,7 +71,6 @@ export function usePictures(numOfPicturesInFirstRound) {
     shufflePictures,
     picturesClicked,
     setPicturesClicked,
-    dataFromAPI,
     currentPictures,
     updateCurrentPictures,
     numPicsinCurrentRound,

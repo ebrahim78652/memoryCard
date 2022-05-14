@@ -19,7 +19,6 @@ export function useGame() {
     shufflePictures,
     picturesClicked,
     setPicturesClicked,
-    dataFromAPI,
     currentPictures,
     updateCurrentPictures,
     numPicsinCurrentRound,
@@ -94,7 +93,6 @@ export function useGame() {
   return {
     overAllScore,
     highScore,
-    dataFromAPI,
     checkPlayerLostAndShuffleCards,
     currentPictures,
     isGameOver,
