@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { imageInfo } from "../modal/imageInfo";
 
-export function usePictures() {
+export function usePictures(numOfPicturesInFirstRound) {
   const [dataFromAPI, setDataFromAPI] = useState(null);
   const [currentPictures, setCurrentPictures] = useState([]);
   const [picturesClicked, setPicturesClicked] = useState([]);
-  const [numPicsinCurrentRound, setNumPicsinCurrentRound] = useState(3);
+  const [numPicsinCurrentRound, setNumPicsinCurrentRound] = useState(
+    numOfPicturesInFirstRound
+  );
 
   //below effect runs once after the Game Component has mounted.
   //after that it will not run
@@ -28,7 +30,7 @@ export function usePictures() {
       });
       console.log(arrImageInfos);
       setDataFromAPI(arrImageInfos);
-      setCurrentPictures(arrImageInfos.slice(0, 3));
+      setCurrentPictures(arrImageInfos.slice(0, numOfPicturesInFirstRound));
     };
     apiCall();
   }, []);

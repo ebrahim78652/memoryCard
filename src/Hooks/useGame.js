@@ -3,6 +3,8 @@ import { useScore } from "./useScore";
 import { usePictures } from "./usePictures";
 
 export function useGame() {
+  const GAME_END = 12;
+  const GAME_START = 3;
   const [
     roundScore,
     setRoundScore,
@@ -22,14 +24,18 @@ export function useGame() {
     updateCurrentPictures,
     numPicsinCurrentRound,
     setNumPicsinCurrentRound,
-  ] = usePictures();
+  ] = usePictures(GAME_START);
+
   const [isGameOver, setIsGameOver] = useState(false);
   const [isGameWon, setIsGameWon] = useState(false);
 
   //checking if player has won
   useEffect(() => {
     console.log(numPicsinCurrentRound);
-    if (roundScore === numPicsinCurrentRound && numPicsinCurrentRound === 12) {
+    if (
+      roundScore === numPicsinCurrentRound &&
+      numPicsinCurrentRound === GAME_END
+    ) {
       setIsGameWon(true);
     }
 
@@ -81,8 +87,8 @@ export function useGame() {
     setIsGameOver(false);
     setIsGameWon(false);
     setPicturesClicked([]);
-    updateCurrentPictures(3);
-    setNumPicsinCurrentRound(3);
+    updateCurrentPictures(GAME_START);
+    setNumPicsinCurrentRound(GAME_START);
   };
 
   return {
