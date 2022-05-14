@@ -3,7 +3,16 @@ import { useScore } from "./useScore";
 import { usePictures } from "./usePictures";
 
 export function useGame() {
-  const [score, setScore, highScore, setHighscore, incrementScore] = useScore();
+  const [
+    roundScore,
+    setRoundScore,
+    highScore,
+    setHighscore,
+    incrementScore,
+    overAllScore,
+    setOverAllScore,
+  ] = useScore();
+
   const [
     shufflePictures,
     picturesClicked,
@@ -20,21 +29,21 @@ export function useGame() {
   //checking if player has won
   useEffect(() => {
     console.log(numPicsinCurrentRound);
-    if (score === numPicsinCurrentRound && numPicsinCurrentRound === 12) {
+    if (roundScore === numPicsinCurrentRound && numPicsinCurrentRound === 12) {
       setIsGameWon(true);
     }
 
     //if round is won, then going to next round;
-    if (score === numPicsinCurrentRound) {
+    if (roundScore === numPicsinCurrentRound) {
       console.log("start of new round!");
       const numPicturesInOldRound = numPicsinCurrentRound;
       const numPicsInNewRound = numPicturesInOldRound * 2;
       updateCurrentPictures(numPicsInNewRound);
       setNumPicsinCurrentRound(numPicsInNewRound);
-      setScore(0);
+      setRoundScore(0);
       setPicturesClicked([]);
     }
-  }, [score]);
+  }, [roundScore]);
 
   const checkPlayerLostAndShuffleCards = (event) => {
     const dataAttribute = event.target.attributes[0].value;
@@ -66,7 +75,8 @@ export function useGame() {
   //extract this method.
 
   const onRestart = () => {
-    setScore(0);
+    setRoundScore(0);
+    setOverAllScore(0);
     setHighscore(0);
     setIsGameOver(false);
     setIsGameWon(false);
@@ -76,7 +86,7 @@ export function useGame() {
   };
 
   return {
-    score,
+    overAllScore,
     highScore,
     dataFromAPI,
     checkPlayerLostAndShuffleCards,

@@ -4,7 +4,7 @@ export function Game(props) {
   //initialise the state;
 
   const {
-    score,
+    overAllScore,
     highScore,
     dataFromAPI,
     checkPlayerLostAndShuffleCards,
@@ -20,7 +20,7 @@ export function Game(props) {
         <h1>Memory Game</h1>
       </header>
       <div className="scoreContainer">
-        <div className="score">Score: {score}</div>
+        <div className="score">Score: {overAllScore}</div>
         <div className="high_score">High Score: {highScore} </div>
       </div>
       {dataFromAPI ? (
